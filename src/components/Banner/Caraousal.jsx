@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { TrendingCoins } from '../../config/api'
 import axios from 'axios'
 import { GetCryptoState } from '../../context/cryptoContext'
-import AliceCarousel from 'react-alice-carousel'
 import { Link } from 'react-router-dom'
+import { motion } from "framer-motion";
 
 const Caraousal = () => {
     const {currency} = GetCryptoState()
@@ -336,11 +336,21 @@ const Caraousal = () => {
 
 
   return (
-    <div className='Caraousal Container flex justify-start gap-16  md:gap-36 border-red-700 mb-8'>
+    <motion.div 
+    className='Caraousal Container flex justify-start gap-36  md:gap-64 border-red-700 mb-8'
+    initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          >
         {
             trendingCoins.slice(count,count+4).map((each)=>{
                 return(
-                    <Link to={`/coins/${each.id}`}key={each.id} className='w-[24px] sm:w-[48px] md:w-[56px] lg:w-[64px] shrink-0 border-b-2'
+                    <motion.div key={each.id}
+                    initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          >
+                    <Link to={`/coins/${each.id}`} className='w-[12px]  md:w-[24px]  border-b-2'
                     >
                         <img src={each.image} 
                          className="transition duration-300 ease-in-out"
@@ -353,13 +363,14 @@ const Caraousal = () => {
                         
                         
                     </Link>
+                    </motion.div>
                 )
             })
         }
        
 
         
-    </div>
+    </motion.div>
   )
 }
 

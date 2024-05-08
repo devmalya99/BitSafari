@@ -11,7 +11,7 @@ const HeroBannner = () => {
       <div className="relative z-10 flex items-center justify-center h-full">
         
         <div className="flex flex-col text-center text-white mt-12 items-center">
-        <h1 className="text-5xl font-bold mb-4 text-center">Explore Cryptoverse</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center lg:text-4xl">Explore Cryptoverse</h1>
           <p className="text-xl mb-8">Find your next fortune</p>
          
           <div className='main-caraousal-container'>

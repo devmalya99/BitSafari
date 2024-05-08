@@ -5,8 +5,8 @@ import { GetCryptoState } from "../context/cryptoContext";
 import axios from "axios";
 import SortToastify from "./sortToastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
-
+import { faCertificate, faMagnifyingGlass, faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 const CoinsTable = () => {
   const { currency } = GetCryptoState();
   const [loading, setLoading] = useState(false);
@@ -3153,11 +3153,24 @@ const CoinsTable = () => {
                   <FontAwesomeIcon icon={faSortUp} />
                 )}
               </th>
+
+              <th
+                className="text-lg cursor-pointer"
+                onClick={() => handleSort("current_price", sortOrder)}
+              >
+               Add to List
+              </th>
+
+
             </tr>
           </thead>
           {filteredCoins.slice((page - 1) * 10, page * 10).map((coin) => {
             return (
-              <tbody key={coin.id}>
+              <motion.tbody key={coin.id}
+              className="hover:bg-gray-900"
+              initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 1 }}>
                 {/* row 1 */}
                 <tr>
                   <th>{coin.market_cap_rank}</th>
@@ -3186,11 +3199,17 @@ const CoinsTable = () => {
                   <td
                     className={
                       coin.market_cap_change_percentage_24h.toFixed(2) > 0
-                        ? "text-green-500 font-bold"
+                        ? "text-green-500 font-bold "
                         : "text-red-600 font-bold"
                     }
                   >
-                    {coin.price_change_percentage_24h}%
+                    <span className={
+                      coin.market_cap_change_percentage_24h> 0
+                        ? "text-green-500 font-bold border-green-500 border-2 rounded-xl px-4 py-1"
+                        : "text-red-600 font-bold border-red-500 border-2 rounded-xl px-4 py-1"
+                    }>
+                    {coin.price_change_percentage_24h.toFixed(2)}%
+                    </span>
                   </td>
                   <td
                     className={
@@ -3199,16 +3218,16 @@ const CoinsTable = () => {
                         : "text-red-600 font-bold"
                     }
                   >
-                    {coin.ath_change_percentage}%
+                    {coin.ath_change_percentage.toFixed(2)}%
                   </td>
                   <td
                     className={
-                      coin.market_cap_change_percentage_24h.toFixed(2) > 0
+                      coin.market_cap_change_percentage_24h> 0
                         ? "text-green-500 font-bold"
                         : "text-red-600 font-bold"
                     }
                   >
-                    {coin.atl_change_percentage}%
+                    {coin.atl_change_percentage.toFixed(2)}%
                   </td>
 
                   <th>
@@ -3217,8 +3236,14 @@ const CoinsTable = () => {
                       {(coin.market_cap / 1000000000).toFixed(2)}B
                     </span>
                   </th>
+
+                  <th>
+                    <span className="badge badge-ghost badge-sm text-lg">
+                    <FontAwesomeIcon icon={faCertificate} />
+                    </span>
+                  </th>
                 </tr>
-              </tbody>
+              </motion.tbody>
             );
           })}
         </table>
