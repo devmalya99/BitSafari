@@ -2977,7 +2977,10 @@ const handleSearch=(e)=>{
           {/* head */}
           <thead>
             <tr className="bg-yellow-600 text-black">
-              <th></th>
+              <th className="text-lg cursor-pointer" onClick={()=>handleSort("market_cap_rank",sortOrder)}>Rank {sortOrder==='asc' ?
+               <FontAwesomeIcon icon={faSortDown} />:
+               <FontAwesomeIcon icon={faSortUp} />  
+            }</th>
               <th className="text-lg">Name</th>
 
               <th className="text-lg cursor-pointer"  onClick={()=>handleSort("current_price",sortOrder)}>Price {sortOrder==='asc' ?
