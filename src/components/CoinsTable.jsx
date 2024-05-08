@@ -10,9 +10,10 @@ import { faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
 const CoinsTable = () => {
   const { currency } = GetCryptoState();
   const [loading, setLoading] = useState(false);
+  const [searchText, setSearchText] = useState('')
   const [sortOrder, setSortOrder] = useState('asc');
   const [show,setShow] = useState(false)
-  
+  const [page,setPage] = useState(1)
       // const [coins,setCoins] = useState([])
   
 
@@ -2913,6 +2914,8 @@ const CoinsTable = () => {
             "last_updated": "2024-05-08T05:29:30.399Z"
         }
     ]
+
+    const totalPages = coins.length/10;
     
 
     const [filteredCoins,setFilteredCoins] = useState(coins)
@@ -2937,24 +2940,32 @@ const CoinsTable = () => {
         
     }
 
-
-
 console.log(coins)
 
+const handleClick=(currentPage)=>{
+  setPage(currentPage)
+  window.scroll(0,550);
+}
+
+const handleSearch=(e)=>{
+  setSearchText(e.target.value.toLowerCase())
+  const searchedList=coins.filter((each)=>each.name.toLowerCase().includes(searchText) || each.symbol.includes(searchText))
+  
+
+  setFilteredCoins(searchedList)
+}
 
 
   return (
 
     <div className="overflow-x-auto">
-      {
-        show ?
-        <SortToastify 
-        order={sortOrder} 
-        setShow={setShow}/> : null
-      }
+      
         <div className="flex justify-center text-2xl font-semibold mt-2">Top Cryptocurrency by Market Capitalisation</div>
+
+
         <input className="border-2 w-full py-2 mt-4
-        6" placeholder="Search Coins .." 
+        6" placeholder="Search Coins .."
+        onChange={handleSearch} 
           />
       
       {loading ? (
@@ -2996,7 +3007,7 @@ console.log(coins)
 
             </tr>
           </thead>
-          {filteredCoins.slice(0,10).map((coin) => {
+          {filteredCoins.slice((page-1)*10,page*10).map((coin) => {
             return (
               <tbody key={coin.id}>
                 {/* row 1 */}
@@ -3043,11 +3054,14 @@ console.log(coins)
       )}
 
 <div className="join flex justify-center mt-4">
-      <button className="join-item btn btn-md btn-active">1</button>
-      <button className="join-item btn btn-md ">2</button>
-      <button className="join-item btn btn-md">3</button>
-       <button className="join-item btn btn-md">4</button>
-    </div>
+  {
+    Array.from({length:totalPages },(_, i)=>(
+      <button key={i+1} 
+      onClick={()=>handleClick(i+1)}
+      className={`join-item btn btn-md  ${page===i+1 ? 'btn-active': ''}`}>{i+1}</button>
+    ))
+  }
+</div>
 
     </div>
   );

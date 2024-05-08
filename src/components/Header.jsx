@@ -35,7 +35,7 @@ const Header = () => {
               <nav
                 // :className="!navbarOpen && 'hidden' "
                 id="navbarCollapse"
-                className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-slate-800  px-6 py-5 shadow dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent ${
+                className={`absolute z-50 right-4 top-full w-full max-w-[250px] rounded-lg bg-slate-800  px-6 py-5 shadow dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent ${
                   !open && "hidden"
                 } `}
               >
@@ -70,7 +70,7 @@ const ListItem = ({ children, NavLink }) => {
       <li>
         <Link
           to={NavLink}
-          className="flex py-2 text-base font-medium lg:ml-12 lg:inline-flex hover:border-b-2
+          className="flex py-2 z-10 text-base font-medium lg:ml-12 lg:inline-flex hover:border-b-2
           shadow-md p-2 hover:shadow-neutral-400 "
         >
           {children}
