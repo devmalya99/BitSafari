@@ -34,20 +34,20 @@ function Header() {
             </div>
         
         <Link to="/home">
-          <p className="text-lg shadow-md shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Home</p>
+          <p className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Home</p>
         </Link>
         <Link to="/compare">
-          <p className="text-lg shadow-md shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Compare</p>
+          <p className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Compare</p>
         </Link>
         <Link to="/watchlist">
-          <p className="text-lg shadow-md shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Watchlist</p>
+          <p className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Watchlist</p>
         </Link>
         <Link to="/dashboard">
-          <button className="text-lg shadow-md shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Dashboard</button>
+          <button className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Dashboard</button>
         </Link>
 
         <Link to="/dashboard">
-          <button className="text-lg shadow-md shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">GetIn</button>
+          <button className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">GetIn</button>
         </Link>
       </div>
       <div className="drawer-component">

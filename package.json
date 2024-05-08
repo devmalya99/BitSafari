@@ -21,11 +21,13 @@
     "@mui/material": "^5.15.16",
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "axios": "^1.6.8",
+    "framer-motion": "^11.1.9",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0",
     "react-toastify": "^10.0.5",
+    "react-web-share": "^2.0.2",
     "styled-components": "^6.1.9"
   },
   "devDependencies": {
