@@ -1,8 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Header from './Header'
+
 import Homepage from '../Pages/Homepage'
 import CoinPage from '../Pages/CoinPage'
+import Header from './common/Header/Header'
 const Navigation = () => {
   return (
     <div>
