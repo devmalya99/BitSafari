@@ -6,7 +6,7 @@ const HeroBannner = () => {
   return (
     <div>
          <div className="relative z-0 rounded-3xl  mb-8 min-h-screen/75 bg-cover bg-center " style={{ backgroundImage: `url(${Banner})` }}>
-      <div className="absolute inset-0 bg-black opacity-35 rounded-3xl "></div>
+      <div className="absolute inset-0 bg-black opacity-65 rounded-3xl "></div>
 
       <div className="relative z-10 flex items-center justify-center h-full">
         

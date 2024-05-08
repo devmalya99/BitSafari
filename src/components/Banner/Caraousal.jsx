@@ -348,7 +348,7 @@ const Caraousal = () => {
                         <div className='flex flex-col'>
                         <span className='text-lg font-semibold mb-2'>{each.name}</span>
                         <span className={each.market_cap_change_percentage_24h.toFixed(2)>0 ?'text-green-500 font-semibold bg-white': 'text-red-600 font-semibold  text-xl rounded-lg mb-4'}>{each.market_cap_change_percentage_24h.toFixed(2)}%</span>
-                        <div className={each.market_cap_change_percentage_24h.toFixed(2)>0 ?'text-green-500 font-semibold': 'text-yellow-500 font-semibold  text-lg rounded-lg'}>{each.current_price}{currency==='INR'? '₹' : '$'}</div>
+                        
                         </div>
                         
                         
