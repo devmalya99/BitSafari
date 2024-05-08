@@ -21,7 +21,7 @@ function MainComponent() {
           Track Crypto
         </motion.h1>
         <motion.h1
-          className="heading2 lg:text-8xl mt-8  lg:mt-20"
+          className="heading2 lg:text-6xl mt-4  lg:mt-20"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.75, duration: 1 }}
