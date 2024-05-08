@@ -11,7 +11,7 @@ const Navigation = () => {
       
       <Header/>
        <Routes>
-       <Route path="/" element={<Homepage/>}/>
+       <Route path="/home" element={<Homepage/>}/>
        <Route path="/coins/:id" element={<CoinPage/>}/>
        </Routes>
      

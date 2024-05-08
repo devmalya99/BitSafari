@@ -16,9 +16,9 @@ function Header() {
 
   return (
     <div className="header">
-       <Link to="/" className="w-full py-5 flex items-center ">
+       <Link to="/" className="w-full flex items-center ">
               <img src={logo} className="hidden ml-2 h-8 dark:block" />
-              <span className="text-yellow-500 text-xl font-mono  font-bold mr-12">
+              <span className="text-yellow-500 text-xl font-mono  font-bold mr-12 md:text-3xl">
                 Bitsafari
               </span>
             </Link>
@@ -33,17 +33,21 @@ function Header() {
               </select>
             </div>
         
-        <Link to="/">
-          <p className="">Home</p>
+        <Link to="/home">
+          <p className="text-lg shadow-md shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Home</p>
         </Link>
         <Link to="/compare">
-          <p className="">Compare</p>
+          <p className="text-lg shadow-md shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Compare</p>
         </Link>
         <Link to="/watchlist">
-          <p className="">Watchlist</p>
+          <p className="text-lg shadow-md shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Watchlist</p>
         </Link>
         <Link to="/dashboard">
-          <button>Dashboard</button>
+          <button className="text-lg shadow-md shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Dashboard</button>
+        </Link>
+
+        <Link to="/dashboard">
+          <button className="text-lg shadow-md shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">GetIn</button>
         </Link>
       </div>
       <div className="drawer-component">
