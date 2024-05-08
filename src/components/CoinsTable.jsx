@@ -3055,7 +3055,7 @@ const CoinsTable = () => {
         Top Cryptocurrency by Market Capitalisation
       </div>
 
-      <div className="flex justify-between border-2 rounded-xl w-full lg:w-[700px] py-2 mt-4 mb-8 lg:ml-[500px]">
+      <div className="flex justify-between border-2 rounded-xl w-full lg:w-[700px] py-2 mt-8 mb-8 lg:ml-[500px]">
       
         <input
         className="ml-4 text-2xl outline-none"
@@ -3066,6 +3066,13 @@ const CoinsTable = () => {
       <FontAwesomeIcon icon={faMagnifyingGlass} />
       </div>
       
+      </div>
+
+      <div className="py-4 mb-8 mt-6 w-full md:w-[700px] lg:ml-[500px] ">
+      <div role="tablist" className="tabs tabs-boxed">
+  <a role="tab" className="tab text-xl">Grid View</a>
+  <a role="tab" className="tab tab-active text-xl">List View</a>
+</div>
       </div>
 
       
