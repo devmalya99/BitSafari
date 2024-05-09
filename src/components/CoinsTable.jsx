@@ -81,7 +81,7 @@ const CoinsTable = () => {
 
       <SearchCoin setFilteredCoins={setFilteredCoins}/>
 
-      <div className="py-4 mb-8 mt-6 w-full md:w-[700px] lg:ml-[450px] ">
+      <div className="py-4 mb-8 mt-6 w-full md:w-[700px] lg:ml-[400px] ">
       <div role="tablist" className="tabs tabs-boxed">
   <a role="tab" className="tab text-xl">Grid View</a>
   <a role="tab" className="tab tab-active text-xl">List View</a>

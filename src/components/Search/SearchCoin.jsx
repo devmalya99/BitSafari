@@ -21,7 +21,7 @@ const SearchCoin = ({setFilteredCoins}) => {
 
 
   return (
-    <div className="flex justify-between border-2 rounded-xl w-full lg:w-[700px] py-2 mt-8 mb-8 lg:ml-[450px]">
+    <div className="flex justify-between border-2 rounded-xl w-full lg:w-[700px] py-2 mt-8 mb-8 lg:ml-[400px]">
       
         <input
         className="ml-4 text-2xl outline-none"
