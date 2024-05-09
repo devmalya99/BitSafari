@@ -1,12 +1,13 @@
 import React from 'react'
 import HeroBannner from '../components/Banner/HeroBannner'
-import CoinsTable from '../components/CoinsTable'
+import AllCoins from '../components/AllCoins'
 
 const Homepage = () => {
   return (
     <div>
       <HeroBannner/>
-      <CoinsTable/>
+      
+      <AllCoins/>
     </div>
   )
 }
