@@ -21,14 +21,14 @@ const SearchCoin = ({setFilteredCoins}) => {
 
 
   return (
-    <div className="flex justify-between border-2 rounded-xl w-full lg:w-[700px] py-2 mt-8 mb-8 lg:ml-[400px]">
+    <div className="flex justify-between border-2 rounded-xl w-full lg:w-[700px] py-2 mt-8 ">
       
         <input
         className="ml-4 text-2xl outline-none"
         placeholder="Search Coins .."
         onChange={handleSearch}
       />
-      <div className="px-2 mr-6">
+      <div className="px-2 mr-6 text-xl">
       <FontAwesomeIcon icon={faMagnifyingGlass} />
       </div>
       

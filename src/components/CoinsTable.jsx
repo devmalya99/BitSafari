@@ -12,6 +12,7 @@ import { coins } from "../utils/coins";
 import { useDispatch } from "react-redux";
 import { addToWatchlist } from "../Pages/Dashboard/WatchList/watchlistSlice";
 import myStore from "../Redux/store";
+import TabsComponent from "./TabsComponent";
 const CoinsTable = () => {
   const { currency } = GetCryptoState();
   const [loading, setLoading] = useState(false);
@@ -75,18 +76,19 @@ const CoinsTable = () => {
 
   return (
     <div className="overflow-x-auto">
+      <div className="flex  justify-center text-3xl md:text-4xl font-semibold mt-2">
+        Top Cryptocurrency
+      </div>
+
       <div className="flex  justify-center text-2xl font-semibold mt-2">
-        Top Cryptocurrency by Market Capitalisation
-      </div>
-
       <SearchCoin setFilteredCoins={setFilteredCoins}/>
-
-      <div className="py-4 mb-8 mt-6 w-full md:w-[700px] lg:ml-[400px] ">
-      <div role="tablist" className="tabs tabs-boxed">
-  <a role="tab" className="tab text-xl">Grid View</a>
-  <a role="tab" className="tab tab-active text-xl">List View</a>
-</div>
       </div>
+      <div className="flex justify-center">
+      
+      <TabsComponent/>
+        </div>
+
+      
 
       
 
