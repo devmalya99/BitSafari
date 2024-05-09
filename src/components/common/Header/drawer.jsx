@@ -34,7 +34,7 @@ export default function TemporaryDrawer() {
       </IconButton>
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <div className="drawer-div">
-          <Link to="/">
+          <Link to="/home">
             <p className="text-2xl rounded-xl px-2 py-1 mb-4 mt-8 text-yellow-500 font-bold shadow-gray-700 shadow-sm hover:border-e-2">Home</p>
           </Link>
           <Link to="/compare">
