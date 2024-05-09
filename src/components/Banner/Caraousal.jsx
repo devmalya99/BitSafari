@@ -325,7 +325,7 @@ const Caraousal = () => {
 
   useEffect(()=>{
     const interval = setInterval(()=>{
-        setCount(prev=>(prev+2)%trendingCoins.length)
+        setCount(prev=>(prev+3)%trendingCoins.length)
     },3000)
 
     return ()=>clearInterval(interval)
@@ -337,13 +337,13 @@ const Caraousal = () => {
 
   return (
     <motion.div 
-    className='Caraousal Container flex justify-start gap-36  md:gap-64 border-red-700 mb-8'
+    className='Caraousal Container flex justify-start gap-12  md:gap-64 border-red-700 mb-8'
     initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 1 }}
           >
         {
-            trendingCoins.slice(count,count+2).map((each)=>{
+            trendingCoins.slice(count,count+3).map((each)=>{
                 return(
                     <motion.div key={each.id}
                     initial={{ opacity: 0, x: 50 }}
