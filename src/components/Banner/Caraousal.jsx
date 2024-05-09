@@ -325,7 +325,7 @@ const Caraousal = () => {
 
   useEffect(()=>{
     const interval = setInterval(()=>{
-        setCount(prev=>(prev+4)%trendingCoins.length)
+        setCount(prev=>(prev+2)%trendingCoins.length)
     },3000)
 
     return ()=>clearInterval(interval)
@@ -343,7 +343,7 @@ const Caraousal = () => {
           transition={{ delay: 0.5, duration: 1 }}
           >
         {
-            trendingCoins.slice(count,count+4).map((each)=>{
+            trendingCoins.slice(count,count+2).map((each)=>{
                 return(
                     <motion.div key={each.id}
                     initial={{ opacity: 0, x: 50 }}
@@ -353,7 +353,7 @@ const Caraousal = () => {
                     <Link to={`/coins/${each.id}`} className='w-[12px]  md:w-[24px]  border-b-2'
                     >
                         <img src={each.image} 
-                         className="transition duration-300 ease-in-out"
+                         className="transition duration-300 ease-in-out h-14"
                         />
                         <div className='flex flex-col'>
                         <span className='text-lg font-semibold mb-2'>{each.name}</span>
