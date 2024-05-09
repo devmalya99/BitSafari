@@ -8,10 +8,12 @@ import { coins } from "../utils/coins";
 import TabsComponent from "./TabsComponent";
 import CoinTable from "./CoinTable";
 import Pagination from "./Pagination";
+import CoinGrid from "./CoinGrid";
 const CoinsTable = () => {
   const { currency } = GetCryptoState();
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const [showGrid,setShowGrid] = useState(true)
 
   // const [coins,setCoins] = useState([])
 
@@ -43,20 +45,30 @@ const CoinsTable = () => {
         <SearchCoin setFilteredCoins={setFilteredCoins} />
       </div>
       <div className="flex justify-center">
-        <TabsComponent />
+        <TabsComponent setShowGrid={setShowGrid}/>
       </div>
 
-      {loading ? (
-        <div className="flex justify-center text-center">
+     { 
+     loading && <div className="flex justify-center text-center">
           <span className=" loading loading-infinity loading-lg text-warning"></span>
         </div>
-      ) : (
+     }
+     {
+        showGrid ? 
+        <CoinGrid filteredCoins={filteredCoins}
+        setFilteredCoins={setFilteredCoins}
+        page={page}/> 
+        :
         <CoinTable
           filteredCoins={filteredCoins}
           setFilteredCoins={setFilteredCoins}
           page={page}
         />
-      )}
+
+     }
+      
+        
+      
 
       <Pagination page={page} setPage={setPage} totalPages={totalPages} />
     </div>
