@@ -23,11 +23,10 @@ const CryptoPriceCard = ({ data }) => {
  
 
   return (
-
-
-
-<div className="flex justify-between overflow-x-auto border-2 rounded-xl mb-2 collapse bg-base-200 ">
-
+    <div className="collapse bg-base-200">
+  <input type="checkbox" /> 
+  <div className="collapse-title text-xl font-medium">
+  <div className="flex justify-between overflow-x-auto border-2 border-blue-500 rounded-xl mb-2  ">
   <table className="table">
 
     <tbody>
@@ -49,7 +48,7 @@ const CryptoPriceCard = ({ data }) => {
             </div>
           </div>
         </td>
-        <td className='border-2 text-left'>
+        <td className=''>
           <span className='border-2 text-left'>
             {current_price}
           </span>
@@ -69,10 +68,8 @@ const CryptoPriceCard = ({ data }) => {
         >
           {price_change_percentage_24h.toFixed(2)}%
         </span>
-        </td>
 
-        <td className='border-2'>
-          <span className={`border-2 rounded-full px-2 py-1 ${isGreen? 'border-green-600' : 'border-red-700'} `}>
+        <span className={`border-2 rounded-full px-2 py-1 ml-2 ${isGreen? 'border-green-600' : 'border-red-700'} `}>
             {
               isGreen ?
               <FontAwesomeIcon icon={faArrowTrendUp} style={{color: "#12e60f"}} />
@@ -80,11 +77,12 @@ const CryptoPriceCard = ({ data }) => {
               <FontAwesomeIcon icon={faArrowTrendDown} style={{color: "#d60000"}} />
             }
             
-            </span></td>
+            </span>
+        </td>
 
 
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <button className="btn btn-ghost btn-xs">Add details</button>
         </th>
       </tr>
     </tbody>
@@ -92,6 +90,21 @@ const CryptoPriceCard = ({ data }) => {
     
   </table>
 </div>
+    
+  </div>
+  <div className="collapse-content"> 
+    <div>
+    <button className='hover:bg-red-500 px-2 sm:px-6  m-2 lg:px-8 rounded-full md:text-lg'><FontAwesomeIcon icon={faTrash}/></button>
+<button className='hover:bg-green-700 px-2 sm:px-6 m-2 lg:px-8 rounded-full'><FontAwesomeIcon icon={faCartShopping}/></button>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
 
 
   );
@@ -133,7 +146,6 @@ initial={{ opacity: 0, x: -50 }}
 
 
 
-<button className='hover:bg-red-500 px-2 sm:px-6  m-2 lg:px-8 rounded-full md:text-lg'><FontAwesomeIcon icon={faTrash}/></button>
-<button className='hover:bg-green-700 px-2 sm:px-6 m-2 lg:px-8 rounded-full'><FontAwesomeIcon icon={faCartShopping}/></button>
+
 
 </motion.div> */}
