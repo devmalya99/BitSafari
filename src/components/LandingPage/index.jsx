@@ -10,10 +10,10 @@ import ExploreBtn from "../common/ExploreBtn";
 
 function MainComponent() {
   return (
-    <div className="main-flex">
+    <div className="main-flex h-[100vh] bg-[#111]">
       <div className="info-landing">
         <motion.h1
-          className="heading1 text-4xl mt-12 lg:text-9xl"
+          className="heading1 text-4xl mt-6 lg:text-9xl"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 1 }}
