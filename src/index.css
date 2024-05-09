@@ -35,6 +35,7 @@
 
 ::-webkit-scrollbar {
   width: 0.4rem;
+  height: 0.1rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -43,5 +44,14 @@
 
 ::-webkit-scrollbar-thumb {
   background: var(--green);
-  border-radius: 25px;
+  border-radius: 15px;
+}
+
+
+/* Prevent img from being draggable */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
