@@ -17,9 +17,11 @@ const WatchList = () => {
     initial={{ opacity: 0, x: -50 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ delay: 0.5, duration: 1 }}>
+
+      <div className='text-center bg-blue-700 text-xl font-semibold py-1 mb-4'>WatchList</div>
       {
         arr.length===0 && 
-        <div className='text-center flex flex-col items-center'>
+        <div className='text-center flex flex-col items-center h-screen'>
 
           <p className='text-5xl mt-16'>Its lonely here....</p>
 
