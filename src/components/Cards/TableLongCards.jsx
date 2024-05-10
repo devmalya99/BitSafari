@@ -2,18 +2,25 @@ import React, { useState } from 'react'
 import {motion} from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { useDispatch } from 'react-redux'
-import { addToWatchlist } from '../../Pages/Dashboard/WatchList/watchlistSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToWatchlist, removeFromWatchList } from '../../Pages/Dashboard/WatchList/watchlistSlice'
 
 const TableLongCards = ({coin}) => {
 
-    const dispatch = useDispatch()
-    const [added,setAdded] =useState(false)
+  const dispatch = useDispatch();
+  const list = useSelector((store)=>store.watchList.list)
 
-    const handleWishList =(coin)=>{
-        setAdded(true)
-        dispatch(addToWatchlist(coin))
-    }
+  const handleWishList = (coin) => {
+    if(list.includes(coin))
+      {
+        dispatch(removeFromWatchList(coin.id));
+      }else{
+        dispatch(addToWatchlist(coin));
+      }
+  };
+  
+
+  
   return (
     
         <motion.tbody
@@ -94,14 +101,13 @@ const TableLongCards = ({coin}) => {
                 <th>
                 <span 
         onClick={()=>handleWishList(coin)}
-        className='px-2 py-1 m-2 border-2 rounded-full '>
+        className='px-2 py-2 m-2 border-2 rounded-full '>
           
-          {
-            added ?
-            <FontAwesomeIcon icon={faStar} style={{ color: "#FFD43B" }}/>
-            :
-            <FontAwesomeIcon icon={faStar}/>
-          }
+          {list.includes(coin) ? (
+                <FontAwesomeIcon icon={faStar} size='xl' style={{ color: "#FFD43B" }} />
+              ) : (
+                <FontAwesomeIcon icon={faStar} size='xl'/>
+              )}
         </span>
                 </th>
               </tr>

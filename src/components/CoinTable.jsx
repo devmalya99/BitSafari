@@ -131,7 +131,7 @@ const CoinTable = ({ filteredCoins, setFilteredCoins, page }) => {
             
               <TableLongCards key={coin.id} coin={coin} />
            
-            
+          
           );
         })}
       </table>

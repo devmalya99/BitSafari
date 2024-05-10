@@ -26,9 +26,9 @@ const CryptoGridCard = ({ data }) => {
     atl_change_percentage,
   } = data;
 
-  const dispatch = useDispatch();
+  
   const isGreen = price_change_percentage_24h > 0;
-
+const dispatch = useDispatch();
   const handleWishList = (coin) => {
     if(list.includes(coin))
       {
