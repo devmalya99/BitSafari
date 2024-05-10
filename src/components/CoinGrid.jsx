@@ -1,28 +1,41 @@
 import React from 'react';
 import CryptoGridCard from './Cards/CryptoGridCard';
-import { Grid, useMediaQuery, useTheme } from '@mui/material';
+import { Grid, useMediaQuery, useTheme, createTheme } from '@mui/material';
+
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 750, // Added custom breakpoint for 750px
+      lg: 960,
+      xl: 1280,
+    },
+  },
+});
 
 const CoinGrid = ({ filteredCoins, setFilteredCoins, page }) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const muiTheme = useTheme();
+  const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(muiTheme.breakpoints.between('sm', 'md'));
 
   return (
     <div className='m-3'>
-    <Grid container spacing={2} >
-      {filteredCoins
-        .slice((page - 1) * 10, page * 10)
-        .map((each) => (
-          <Grid
-            item
-            key={each.id}
-            xs={isMobile ? 12 : 4}
-            sm={isMobile ? 12 : 4}
-            md={4}
-          >
-            <CryptoGridCard data={each} />
-          </Grid>
-        ))}
-    </Grid>
+      <Grid container spacing={2}>
+        {filteredCoins
+          .slice((page - 1) * 10, page * 10)
+          .map((each) => (
+            <Grid
+              item
+              key={each.id}
+              xs={isMobile ? 12 : isTablet ? 6 : 4}
+              sm={isMobile ? 12 : isTablet ? 6 : 4}
+              md={isTablet ? 12 : 4}
+            >
+              <CryptoGridCard data={each} />
+            </Grid>
+          ))}
+      </Grid>
     </div>
   );
 };

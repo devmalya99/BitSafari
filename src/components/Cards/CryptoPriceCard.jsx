@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useDispatch } from 'react-redux';
-import { removeFromWatchList } from '../../Pages/Dashboard/WatchList/watchlistSlice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowTrendDown, faArrowTrendUp, faCartShopping, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { coins } from '../../utils/coins';
-import './style.css'
+import { useDispatch } from "react-redux";
+import { removeFromWatchList } from "../../Pages/Dashboard/WatchList/watchlistSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowTrendDown,
+  faArrowTrendUp,
+  faCartShopping,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
+import { coins } from "../../utils/coins";
+import "./style.css";
 
 const CryptoPriceCard = ({ data }) => {
-    
   const {
     id,
     symbol,
@@ -16,103 +20,98 @@ const CryptoPriceCard = ({ data }) => {
     image,
     current_price,
     market_cap,
+    total_volume,
     price_change_percentage_24h,
+    ath_change_percentage,
   } = data;
 
-  const [isGreen,setGreen] = useState(price_change_percentage_24h>0)
- 
+  const [isGreen, setGreen] = useState(price_change_percentage_24h > 0);
 
   return (
-    <div className="collapse bg-base-200">
-  <input type="checkbox" /> 
-  <div className="collapse-title text-xl font-medium">
-  <div className="flex justify-between overflow-x-auto border-2 border-blue-500 rounded-xl mb-2  ">
-  <table className="table">
+    <div className="collapse w-screen bg-[#111]">
+      <input type="checkbox" />
+      <div className="collapse-title text-xl font-medium">
+        <div className="flex justify-between overflow-x-auto border-2 border-blue-500 rounded-xl mb-2  ">
+          <table className="table">
+            <tbody>
+              {/* row 1 */}
+              <tr>
+                <td className="">
+                  <div className="flex items-center gap-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-8 h-8">
+                        <img src={image} />
+                      </div>
+                    </div>
+                    <div>
+                      <h2 className="text-sm md:text-md lg:text-xl  font-semibold">
+                        {name}
+                      </h2>
+                      <span className="text-left">₹{current_price}</span>
+                    </div>
+                  </div>
+                </td>
 
-    <tbody>
-      {/* row 1 */}
-      <tr>
-        
-        <td className='border-2'>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src={image}/>
-              </div>
-            </div>
-            <div>
-            <h2 className="text-sm md:text-md lg:text-xl  font-semibold">
-       {name}
-     </h2>
-              <div className="text-sm opacity-50">{symbol}</div>
-            </div>
-          </div>
-        </td>
-        <td className=''>
-          <span className='border-2 text-left'>
-            {current_price}
-          </span>
-          
-          
-        </td>
-        
+                <td>
+                  <span
+                    className={
+                      isGreen
+                        ? "text-green-500 font-bold border-green-500 border-2 rounded-xl px-2 py-1 text-sm md:text-md lg:text-xl"
+                        : "text-red-600 font-bold border-red-500 border-2 rounded-xl px-2 py-1 text-sm md:text-md lg:text-xl"
+                    }
+                  >
+                    {price_change_percentage_24h.toFixed(2)}%
+                  </span>
+                </td>
 
-        
-        <td>
-        <span
-          className={
-            isGreen
-              ? "text-green-500 font-bold border-green-500 border-2 rounded-xl px-4 py-1 text-sm md:text-md lg:text-xl "
-              : "text-red-600 font-bold border-red-500 border-2 rounded-xl px-4 py-1 text-sm md:text-md lg:text-xl "
-          }
-        >
-          {price_change_percentage_24h.toFixed(2)}%
-        </span>
+                <div className="flex mt-1">
+                  <td className="hidden md:flex flex-col ">
+                    <span className="text-gray-600 mb-1">From_ATH</span>
+                    <div
+                      className={
+                        isGreen
+                          ? "flex justify-center text-green-500 font-bold border-green-500 border-2 rounded-xl px-2 py-2"
+                          : "text-red-600 font-bold border-red-500 border-2 rounded-xl px-2 py-2 sm:px-4 flex justify-center"
+                      }
+                    >
+                      <span className="text-md md:text-md lg:text-md">{ath_change_percentage.toFixed(2)}%</span>
+                      
+                    </div>
+                  </td>
 
-        <span className={`border-2 rounded-full px-2 py-1 ml-2 ${isGreen? 'border-green-600' : 'border-red-700'} `}>
-            {
-              isGreen ?
-              <FontAwesomeIcon icon={faArrowTrendUp} style={{color: "#12e60f"}} />
-              :
-              <FontAwesomeIcon icon={faArrowTrendDown} style={{color: "#d60000"}} />
-            }
-            
-            </span>
-        </td>
+                  <td className="hidden md:flex  flex-col">
+                    <span className="text-gray-600 mb-2">Total Volume</span>
+                    <span className="text-left text-lg">{(total_volume/1000000000).toFixed()} B</span>
+                  </td>
 
-
-        <th>
-          <button className="btn btn-ghost btn-xs">Add details</button>
-        </th>
-      </tr>
-    </tbody>
-   
-    
-  </table>
-</div>
-    
-  </div>
-  <div className="collapse-content"> 
-    <div>
-    <button className='hover:bg-red-500 px-2 sm:px-6  m-2 lg:px-8 rounded-full md:text-lg'><FontAwesomeIcon icon={faTrash}/></button>
-<button className='hover:bg-green-700 px-2 sm:px-6 m-2 lg:px-8 rounded-full'><FontAwesomeIcon icon={faCartShopping}/></button>
+                  <td className="hidden md:flex    flex-col">
+                    <span className="text-gray-600 mb-2">Capitalisation</span>
+                    <span className="text-left text-lg">₹{(market_cap/1000000000).toFixed()} B</span>
+                  </td>
+                </div>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="collapse-content">
+        <div>
+          <button className="hover:bg-red-500 px-2 sm:px-6  m-2 lg:px-8 rounded-full md:text-lg">
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+          <button className="hover:bg-green-700 px-2 sm:px-6 m-2 lg:px-8 rounded-full">
+            <FontAwesomeIcon icon={faCartShopping} />
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-
-    
-
-
-
-
-
   );
 };
 
 export default CryptoPriceCard;
 
-{/* <motion.div className='flex justify-evenly  gap-4 mb-4 border-2 rounded-xl'
+{
+  /* <motion.div className='flex justify-evenly  gap-4 mb-4 border-2 rounded-xl'
 
 initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -148,4 +147,5 @@ initial={{ opacity: 0, x: -50 }}
 
 
 
-</motion.div> */}
+</motion.div> */
+}
