@@ -34,6 +34,8 @@ function Header() {
                 <option>INR</option>
               </select>
             </div>
+
+
         
         <Link to="/home">
           <p className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Home</p>
@@ -58,6 +60,8 @@ function Header() {
         <Link to="/dashboard">
           <button className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">GetIn</button>
         </Link>
+
+
       </div>
       <div className="drawer-component">
         <TemporaryDrawer />
