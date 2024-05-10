@@ -7,11 +7,13 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import { useDebugValue, useState } from "react";
-import { useDispatch } from "react-redux";
-import { addToWatchlist } from "../../Pages/Dashboard/WatchList/watchlistSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToWatchlist, removeFromWatchList } from "../../Pages/Dashboard/WatchList/watchlistSlice";
 
 const CryptoGridCard = ({ data }) => {
-  const [added, setAdded] = useState(false);
+  
+  const list = useSelector((store)=>store.watchList.list)
+  console.log(list)
   const {
     id,
     symbol,
@@ -28,8 +30,12 @@ const CryptoGridCard = ({ data }) => {
   const isGreen = price_change_percentage_24h > 0;
 
   const handleWishList = (coin) => {
-    setAdded(true);
-    dispatch(addToWatchlist(coin));
+    if(list.includes(coin))
+      {
+        dispatch(removeFromWatchList(coin.id));
+      }else{
+        dispatch(addToWatchlist(coin));
+      }
   };
 
   return (
@@ -108,7 +114,7 @@ const CryptoGridCard = ({ data }) => {
         </div>
 
         <div className="footer-div flex justify-evenly border-t-2">
-          <div className="Buy Div mt-2 border-2 rounded-xl px-4 py-1 cursor-pointer hover:bg-blue-500 hover:shadow-blue-500 shadow-md ">
+          <div className="Buy Div flex items-center mt-2 border-2 rounded-xl px-4 py-1 cursor-pointer hover:bg-blue-500 hover:shadow-blue-500 shadow-md ">
             <FontAwesomeIcon
               icon={faCartShopping}
               size="xl"
@@ -120,12 +126,12 @@ const CryptoGridCard = ({ data }) => {
           <div className="mt-3">
             <span
               onClick={() => handleWishList(data)}
-              className="flex justify-center px-4 py-2 border-2 rounded-xl "
+              className="flex justify-center hover:bg-yellow-300 px-6 py-3 border-2 rounded-xl "
             >
-              {added ? (
-                <FontAwesomeIcon icon={faStar} style={{ color: "#FFD43B" }} />
+              {list.includes(data) ? (
+                <FontAwesomeIcon icon={faStar} size='xl' style={{ color: "#FFD43B" }} />
               ) : (
-                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} size='xl'/>
               )}
             </span>
           </div>
