@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { coins } from "../../utils/coins";
 import "./style.css";
+import BuyModal from "../BuyModal/BuyModal";
 
 const CryptoPriceCard = ({ data }) => {
   const {
@@ -24,7 +25,8 @@ const CryptoPriceCard = ({ data }) => {
     price_change_percentage_24h,
     ath_change_percentage,
   } = data;
-
+   
+  const dispatch = useDispatch()
   const [isGreen, setGreen] = useState(price_change_percentage_24h > 0);
 
   return (
@@ -95,15 +97,28 @@ const CryptoPriceCard = ({ data }) => {
         </div>
       </div>
       <div className="collapse-content">
-        <div>
-          <button className="hover:bg-red-500 px-2 sm:px-6  m-2 lg:px-8 rounded-full md:text-lg">
-            <FontAwesomeIcon icon={faTrash} />
+
+        <div className="flex">
+
+        <div className="Buy Div flex items-center mt-2 border-2 bg-[#111] rounded-xl px-4 py-1 cursor-pointer  shadow-md ">
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              size="xl"
+              style={{ color: "#63E6BE" }}
+            />
+            <div className="btn text-2xl ml-2" onClick={()=>document.getElementById('my_modal_4').showModal()}>Buy</div>
+            
+          </div>
+
+
+          <button className="border-2 border-red-500 px-2 sm:px-6 mt-2 ml-2 lg:px-8 rounded-2xl md:text-lg "
+          onClick={()=>dispatch(removeFromWatchList(id))}>
+            <FontAwesomeIcon icon={faTrash} size='xl'/>
           </button>
-          <button className="hover:bg-green-700 px-2 sm:px-6 m-2 lg:px-8 rounded-full">
-            <FontAwesomeIcon icon={faCartShopping} />
-          </button>
+          
         </div>
       </div>
+      <BuyModal/>
     </div>
   );
 };

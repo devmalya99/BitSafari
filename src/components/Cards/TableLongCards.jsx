@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import {motion} from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWatchlist, removeFromWatchList } from '../../Pages/Dashboard/WatchList/watchlistSlice'
-
+import BuyModal from '../BuyModal/BuyModal'
 const TableLongCards = ({coin}) => {
 
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const TableLongCards = ({coin}) => {
         <motion.tbody
               key={coin.id}
               className="hover:bg-gray-900"
+              
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 1 }}
@@ -110,7 +111,20 @@ const TableLongCards = ({coin}) => {
               )}
         </span>
                 </th>
+
+                <th>
+                  <div className="btn text-2xl ml-2" 
+                  onClick={()=>document.getElementById('my_modal_4').showModal()}
+                  >
+                    <FontAwesomeIcon
+              icon={faCartShopping}
+              size="xl"
+              style={{ color: "#63E6BE" }}
+            />
+                  </div>
+                </th>
               </tr>
+              <BuyModal/>
             </motion.tbody>
     
   )

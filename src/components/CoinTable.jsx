@@ -124,7 +124,12 @@ const CoinTable = ({ filteredCoins, setFilteredCoins, page }) => {
             </th>
 
             <th className="text-lg cursor-pointer">Add to List</th>
+          
+            <th className="text-lg cursor-pointer">Buy/Sell</th>
+          
           </tr>
+
+          
         </thead>
         {filteredCoins.slice((page - 1) * 10, page * 10).map((coin) => {
           return (

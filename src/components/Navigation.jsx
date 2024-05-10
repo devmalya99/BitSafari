@@ -7,6 +7,7 @@ import Header from './common/Header/Header'
 import LandingPage from '../components/LandingPage/index'
 import Dashboard from '../Pages/Dashboard'
 import WatchList from '../Pages/Dashboard/WatchList'
+import Compare from '../components/Compare'
 const Navigation = () => {
   return (
     <div>
@@ -16,6 +17,7 @@ const Navigation = () => {
        <Routes>
        <Route path="/" element={<LandingPage/>}/>
        <Route path="/dashboard" element={<Dashboard/>}/>
+       <Route path="/compare" element={<Compare/>}/>
        <Route path="/watchlist" element={<WatchList/>}/>
        <Route path="/home" element={<Homepage/>}/>
        <Route path="/coins/:id" element={<CoinPage/>}/>

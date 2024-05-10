@@ -42,7 +42,7 @@ const CoinsTable = () => {
       </div>
 
       <div className="flex  justify-center text-2xl font-semibold mt-2">
-        <SearchCoin setFilteredCoins={setFilteredCoins} />
+        <SearchCoin coins={coins} setFilteredCoins={setFilteredCoins} />
       </div>
       <div className="flex justify-center">
         <TabsComponent setShowGrid={setShowGrid}/>
