@@ -6,9 +6,11 @@ import Switch from "@mui/material/Switch";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { GetCryptoState } from "../../../context/cryptoContext";
+import { useSelector } from "react-redux";
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = useState(false);
+  const wishlist = useSelector((store)=>store.watchList.list)
 
   const {currency, setCurrency
   }  = GetCryptoState()
@@ -40,9 +42,17 @@ export default function TemporaryDrawer() {
           <Link to="/compare">
             <p className="text-2xl px-2 py-1 mb-4 rounded-xl text-yellow-500 font-bold shadow-gray-700 shadow-sm hover:border-e-2">Compare</p>
           </Link>
-          <Link to="/watchlist">
+
+          <div className="indicator">
+  <span className="indicator-item badge badge-secondary">{wishlist.length}</span> 
+  <Link to="/watchlist">
             <p className="text-2xl px-2 py-1 mb-4 rounded-xl text-yellow-500 font-bold shadow-gray-700 shadow-sm hover:border-e-2">Watchlist</p>
           </Link>
+    </div> 
+
+          
+
+
           <Link to="/dashboard">
             <p className="text-2xl px-2 py-1 mb-4 rounded-xl text-yellow-500 font-bold shadow-gray-700 shadow-sm hover:border-e-2">Dashboard</p>
           </Link>

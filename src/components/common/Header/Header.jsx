@@ -7,8 +7,10 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { GetCryptoState } from "../../../context/cryptoContext";
 import logo from "../../../assets/crypto logo.png";
+import { useSelector } from "react-redux";
 function Header() {
-  
+  const wishlist = useSelector((store)=>store.watchList.list)
+
   const {currency, setCurrency
   }  = GetCryptoState()
   console.log(currency)
@@ -39,9 +41,16 @@ function Header() {
         <Link to="/compare">
           <p className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Compare</p>
         </Link>
-        <Link to="/watchlist">
-          <p className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Watchlist</p>
-        </Link>
+
+
+        <div className="indicator">
+  <span className="indicator-item badge badge-secondary">{wishlist.length}</span> 
+  <Link to="/watchlist">
+            <p className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Watchlist</p>
+          </Link>
+    </div> 
+
+
         <Link to="/dashboard">
           <button className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Dashboard</button>
         </Link>
