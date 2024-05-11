@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const WatchList = () => {
   const arr = useSelector((store)=>store.watchList.list)
-  console.log(arr)
+  
   const navigate = useNavigate()
 
   const handleHome =()=>{

@@ -14,7 +14,7 @@ export default function TemporaryDrawer() {
 
   const {currency, setCurrency
   }  = GetCryptoState()
-  console.log(currency)
+  
 
 
   return (

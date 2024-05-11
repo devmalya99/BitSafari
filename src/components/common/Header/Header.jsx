@@ -13,7 +13,7 @@ function Header() {
 
   const {currency, setCurrency
   }  = GetCryptoState()
-  console.log(currency)
+  
 
 
   return (

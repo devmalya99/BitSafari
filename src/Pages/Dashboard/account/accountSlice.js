@@ -38,7 +38,7 @@ export function deposit(amount,currency){
        const data = await res.json()
        
        const converted = await data.rates.USD
-       console.log(converted)
+       
 
        
 

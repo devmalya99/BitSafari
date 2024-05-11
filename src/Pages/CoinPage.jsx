@@ -8,7 +8,7 @@ const CoinPage = () => {
   const [loading,setLoading] = useState()
   const {id} = useParams()
   const { currency } = GetCryptoState();
-  console.log(id,currency)
+  
    const [coin,setCoin] = useState([])
 
   const fetchCoin = async() => {

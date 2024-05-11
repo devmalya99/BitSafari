@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 const CryptoGridCard = ({ data ,delay }) => {
   
   const list = useSelector((store)=>store.watchList.list)
-  console.log(list)
+  
   const {
     id,
     symbol,

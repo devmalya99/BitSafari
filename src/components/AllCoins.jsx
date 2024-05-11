@@ -33,7 +33,7 @@ const CoinsTable = () => {
 
   const [filteredCoins, setFilteredCoins] = useState(coins);
 
-  console.log(coins);
+  
 
   return (
     <div className="overflow-x-auto">
