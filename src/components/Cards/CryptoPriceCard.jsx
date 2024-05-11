@@ -62,7 +62,7 @@ const CryptoPriceCard = ({ data }) => {
                         : "text-red-600 font-bold border-red-500 border-2 rounded-xl px-2 py-1 text-sm md:text-md lg:text-xl"
                     }
                   >
-                    {price_change_percentage_24h.toFixed(2)}%
+                    {price_change_percentage_24h}%
                   </span>
                 </td>
 
@@ -76,7 +76,7 @@ const CryptoPriceCard = ({ data }) => {
                           : "text-red-600 font-bold border-red-500 border-2 rounded-xl px-2 py-2 sm:px-4 flex justify-center"
                       }
                     >
-                      <span className="text-md md:text-md lg:text-md">{ath_change_percentage.toFixed(2)}%</span>
+                      <span className="text-md md:text-md lg:text-md">{ath_change_percentage}%</span>
                       
                     </div>
                   </td>
@@ -150,7 +150,7 @@ initial={{ opacity: 0, x: -50 }}
               : "text-red-600 font-bold border-red-500 border-2 rounded-xl px-4 py-1 text-sm md:text-md lg:text-xl "
           }
         >
-          {price_change_percentage_24h.toFixed(2)}%
+          {price_change_percentage_24h}%
         </span>
 </div>
 

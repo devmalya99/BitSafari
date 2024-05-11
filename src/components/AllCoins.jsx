@@ -9,6 +9,7 @@ import TabsComponent from "./TabsComponent";
 import CoinTable from "./CoinTable";
 import Pagination from "./Pagination";
 import CoinGrid from "./CoinGrid";
+import InfinityLoader from "./InfinityLoader";
 const CoinsTable = () => {
   const { currency } = GetCryptoState();
   const [loading, setLoading] = useState(false);
@@ -49,9 +50,7 @@ const CoinsTable = () => {
       </div>
 
      { 
-     loading && <div className="flex justify-center text-center">
-          <span className=" loading loading-infinity loading-lg text-warning"></span>
-        </div>
+     loading && <InfinityLoader/>
      }
      {
         showGrid ? 
