@@ -10,6 +10,7 @@ import { useDebugValue, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToWatchlist, removeFromWatchList } from "../../Pages/Dashboard/WatchList/watchlistSlice";
 import BuyModal from "../BuyModal/BuyModal";
+import { Link } from "react-router-dom";
 
 const CryptoGridCard = ({ data ,delay }) => {
   

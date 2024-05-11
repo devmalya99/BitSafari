@@ -5,9 +5,11 @@ import { faCartShopping, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWatchlist, removeFromWatchList } from '../../Pages/Dashboard/WatchList/watchlistSlice'
 import BuyModal from '../BuyModal/BuyModal'
+import { useNavigate } from 'react-router-dom'
 const TableLongCards = ({coin,delay}) => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const list = useSelector((store)=>store.watchList.list)
 
   const handleWishList = (coin) => {
@@ -18,6 +20,10 @@ const TableLongCards = ({coin,delay}) => {
         dispatch(addToWatchlist(coin));
       }
   };
+
+  const handleClick =(id)=>{
+    navigate(`/coins/${id}`)
+  }
   
 
   
@@ -25,8 +31,8 @@ const TableLongCards = ({coin,delay}) => {
     
         <motion.tbody
               key={coin.id}
-              className="hover:bg-gray-900"
-              
+              className="hover:bg-gray-900 cursor-pointer"
+              onClick={()=>handleClick(coin.id)}
               initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: delay }}

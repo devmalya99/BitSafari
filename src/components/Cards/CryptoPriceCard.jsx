@@ -46,7 +46,7 @@ const CryptoPriceCard = ({ data }) => {
                       </div>
                     </div>
                     <div>
-                      <h2 className="text-sm md:text-md lg:text-xl  font-semibold">
+                      <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl  font-semibold">
                         {name}
                       </h2>
                       <span className="text-left">₹{current_price}</span>
