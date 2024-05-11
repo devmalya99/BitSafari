@@ -4,7 +4,7 @@ const Pagination = ({page,setPage,totalPages}) => {
 
     const handleClick = (currentPage) => {
         setPage(currentPage);
-        window.scroll(0, 550);
+        window.scroll(0, 250);
       };
   return (
     <>

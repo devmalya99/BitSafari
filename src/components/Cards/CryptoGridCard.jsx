@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToWatchlist, removeFromWatchList } from "../../Pages/Dashboard/WatchList/watchlistSlice";
 import BuyModal from "../BuyModal/BuyModal";
 
-const CryptoGridCard = ({ data }) => {
+const CryptoGridCard = ({ data ,delay }) => {
   
   const list = useSelector((store)=>store.watchList.list)
   console.log(list)
@@ -41,9 +41,9 @@ const dispatch = useDispatch();
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 150, x: 150 }}
-      animate={{ opacity: 1, y: 0, x: 0 }}
-      transition={{ delay: 0.25, duration: 0.75 }}
+    initial={{ opacity: 0, x: -50 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.5, delay: delay }}
     >
       <div className="border-2  bg-gray-900 text-white rounded-lg p-4 shadow-lg">
        

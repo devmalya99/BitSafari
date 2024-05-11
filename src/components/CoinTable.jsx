@@ -131,10 +131,10 @@ const CoinTable = ({ filteredCoins, setFilteredCoins, page }) => {
 
           
         </thead>
-        {filteredCoins.slice((page - 1) * 10, page * 10).map((coin) => {
+        {filteredCoins.slice((page - 1) * 10, page * 10).map((coin,i) => {
           return (
             
-              <TableLongCards key={coin.id} coin={coin} />
+              <TableLongCards key={coin.id} coin={coin}  delay={(i % 8) * 0.2}/>
            
           
           );

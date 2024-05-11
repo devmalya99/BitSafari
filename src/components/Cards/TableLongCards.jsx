@@ -5,7 +5,7 @@ import { faCartShopping, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWatchlist, removeFromWatchList } from '../../Pages/Dashboard/WatchList/watchlistSlice'
 import BuyModal from '../BuyModal/BuyModal'
-const TableLongCards = ({coin}) => {
+const TableLongCards = ({coin,delay}) => {
 
   const dispatch = useDispatch();
   const list = useSelector((store)=>store.watchList.list)
@@ -28,8 +28,8 @@ const TableLongCards = ({coin}) => {
               className="hover:bg-gray-900"
               
               initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 1 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: delay }}
             >
               {/* row 1 */}
               <tr>

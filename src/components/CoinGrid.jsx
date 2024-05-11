@@ -24,7 +24,7 @@ const CoinGrid = ({ filteredCoins, setFilteredCoins, page }) => {
       <Grid container spacing={2}>
         {filteredCoins
           .slice((page - 1) * 10, page * 10)
-          .map((each) => (
+          .map((each,i) => (
             <Grid
               item
               key={each.id}
@@ -32,7 +32,7 @@ const CoinGrid = ({ filteredCoins, setFilteredCoins, page }) => {
               sm={isMobile ? 12 : isTablet ? 6 : 4}
               md={isTablet ? 12 : 4}
             >
-              <CryptoGridCard data={each} />
+              <CryptoGridCard data={each} delay={(i%3)*0.33} />
             </Grid>
           ))}
       </Grid>
