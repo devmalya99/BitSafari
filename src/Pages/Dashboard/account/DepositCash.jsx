@@ -6,9 +6,13 @@ const DepositCash = () => {
     const [depositMoney,setDeposit] = useState()
     const [withdrawMoney,setWithDraw] = useState()
     const [leverage,setLeverage] = useState()
+    const [currency,setCurrency]= useState('USD')
 
-    const balance = useSelector((store)=>store.account.balance)
-    const holdingsValue = useSelector((store)=>store.account.holdingsValue)
+    const {
+    balance,
+    isLoading,
+    holdingsValue,
+    } = useSelector((store)=>store.account)
     
     const dispatch = useDispatch()
 
@@ -24,9 +28,11 @@ const DepositCash = () => {
     }
 
     const handleDeposit =()=>{
+      if(!depositMoney)return;
        
-        dispatch(deposit(Number(depositMoney)))
-        setDeposit(0)
+        dispatch(deposit(Number(depositMoney),currency))
+        setDeposit("")
+        setCurrency('')
     }
 
     const handleLeverage =()=>{
@@ -56,16 +62,26 @@ const DepositCash = () => {
               placeholder="Enter amount"
               onChange={(e)=>setDeposit(e.target.value)}
             />
-            <select className="px-4 py-2 rounded-r-md mb-4 border border-gray-300 ">
-              <option>USD</option>
-              <option>INR</option>
-              <option>EURO</option>
+            <select className="px-4 py-2 rounded-r-md mb-4 border border-gray-300 "
+            value={currency}
+            onChange={(e)=>setCurrency(e.target.value)}
+            >
+              <option value='USD'>USD</option>
+              <option  value='INR'>INR</option>
+              <option value='EUR'>EURO</option>
             </select>
             <button 
             className=" px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
             onClick={()=>handleDeposit()}
+            disabled={isLoading}
             >
-              DEPOSIT
+              {
+                isLoading ? 
+                <p>conerting...</p>
+                :
+                <p>Deposit</p>
+              }
+              
             </button>
           </div>
         </div>
