@@ -113,12 +113,12 @@ const CryptoPriceCard = ({ data }) => {
 
           <button className="border-2 border-red-500 px-2 sm:px-6 mt-2 ml-2 lg:px-8 rounded-2xl md:text-lg "
           onClick={()=>dispatch(removeFromWatchList(id))}>
-            <FontAwesomeIcon icon={faTrash} size='xl'/>
+            Remove From Watchlist
           </button>
           
         </div>
       </div>
-      <BuyModal/>
+      <BuyModal price={current_price}/>
     </div>
   );
 };

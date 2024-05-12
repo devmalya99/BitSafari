@@ -125,7 +125,7 @@ const CoinTable = ({ filteredCoins, setFilteredCoins, page }) => {
 
             <th className="text-lg cursor-pointer">Add to List</th>
           
-            <th className="text-lg cursor-pointer">Buy/Sell</th>
+            
           
           </tr>
 

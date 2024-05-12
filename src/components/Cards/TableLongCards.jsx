@@ -120,19 +120,9 @@ const TableLongCards = ({coin,delay}) => {
         </span>
                 </th>
 
-                <th>
-                  <div className="btn text-2xl ml-2" 
-                  onClick={()=>document.getElementById('my_modal_4').showModal()}
-                  >
-                    <FontAwesomeIcon
-              icon={faCartShopping}
-              size="xl"
-              style={{ color: "#63E6BE" }}
-            />
-                  </div>
-                </th>
+                
               </tr>
-              <BuyModal/>
+              
             </motion.tbody>
     
   )
