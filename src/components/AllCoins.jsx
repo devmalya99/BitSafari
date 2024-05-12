@@ -1,38 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { GetCryptoState } from "../context/cryptoContext";
 
 import SearchCoin from "./Search/SearchCoin";
-import { coins } from "../utils/coins";
+
 
 import TabsComponent from "./TabsComponent";
 import CoinTable from "./CoinTable";
 import Pagination from "./Pagination";
 import CoinGrid from "./CoinGrid";
 import InfinityLoader from "./InfinityLoader";
+import { CoinList } from "../config/api";
+import axios from "axios";
 const CoinsTable = () => {
   const { currency } = GetCryptoState();
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [showGrid,setShowGrid] = useState(true)
 
-  // const [coins,setCoins] = useState([])
+ 
+  const [filteredCoins, setFilteredCoins] = useState([]);
 
-  // const fetchCoins = async() => {
-  //     setLoading(true)
-  //     const {data}= await axios.get(CoinList(currency))
-  //     setCoins(data)
-  //     setLoading(false)
-  // }
+  const fetchCoins = async() => {
+      setLoading(true)
+      const {data}= await axios.get(CoinList(currency))
+      setFilteredCoins(data)
+      setLoading(false)
+  }
 
-  // useEffect(()=>{
-  //     fetchCoins()
+  useEffect(()=>{
+      fetchCoins()
 
-  // },[currency])
+  },[currency])
 
-  const totalPages = coins.length / 10;
+  let totalPages
+  if(filteredCoins)
+    {
+      totalPages = filteredCoins.length / 10;
 
-  const [filteredCoins, setFilteredCoins] = useState(coins);
+    }
+
+ 
+
+  
 
   
 
@@ -43,7 +53,7 @@ const CoinsTable = () => {
       </div>
 
       <div className="flex  justify-center text-2xl font-semibold mt-2">
-        <SearchCoin coins={coins} setFilteredCoins={setFilteredCoins} />
+        <SearchCoin coins={filteredCoins} setFilteredCoins={setFilteredCoins} />
       </div>
       <div className="flex justify-center">
         <TabsComponent setShowGrid={setShowGrid}/>
@@ -52,26 +62,31 @@ const CoinsTable = () => {
      { 
      loading && <InfinityLoader/>
      }
-     {
-        showGrid ? 
-        <CoinGrid filteredCoins={filteredCoins}
-        setFilteredCoins={setFilteredCoins}
-        page={page}/> 
-        :
-        <CoinTable
-          filteredCoins={filteredCoins}
-          setFilteredCoins={setFilteredCoins}
-          page={page}
-        />
-
-     }
+     {!loading && filteredCoins.length > 0 && (
+        <div>
+          {
+          showGrid ? (
+            <CoinGrid
+              filteredCoins={filteredCoins}
+              setFilteredCoins={setFilteredCoins}
+              page={page}
+            />
+          ) : (
+            <CoinTable
+              filteredCoins={filteredCoins}
+              setFilteredCoins={setFilteredCoins}
+              page={page}
+            />
+          )}
       
         
       
 
       <Pagination page={page} setPage={setPage} totalPages={totalPages} />
     </div>
-  );
+  )}
+  </div>
+  )
 };
 
 export default CoinsTable;

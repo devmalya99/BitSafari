@@ -2,7 +2,7 @@ export const settingCoinObject = (data, setCoin) => {
     setCoin({
       id: data.id,
       name: data.name,
-      symbol: data.symbol,
+      symbol: data.symbol.toUpperCase(),
       image: data.image.large,
       desc: data.description.en,
       price_change_percentage_24h: data.market_data.price_change_percentage_24h,

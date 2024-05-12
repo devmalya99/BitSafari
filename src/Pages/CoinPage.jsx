@@ -6,6 +6,7 @@ import axios from 'axios';
 import { settingCoinObject } from '../functions/convertObject';
 import InfinityLoader from '../components/InfinityLoader'
 import CryptoPriceCard from '../components/Cards/CryptoPriceCard';
+import TradingViewChart from '../components/Widget/TradingViewChart';
 const CoinPage = () => {
   const [loading,setLoading] = useState()
   const {id} = useParams()
@@ -26,21 +27,26 @@ const CoinPage = () => {
 
   },[])
 
- 
+
 
   return (
 
     <div>
-      {
-        loading ? <InfinityLoader/>: 
-        <div>
-          <CryptoPriceCard data={coinData}/>
-          
-          </div>
-      }
+    {/* {loading && <InfinityLoader />}
+    
+      <div>
+        <CryptoPriceCard data={coinData} />
+        
+      </div>
+    
+     */}
+      <CryptoPriceCard data={coinData} />
+     <div className='h-[80vh] w-auto px-4'>
+      {coinData.symbol && <TradingViewChart symbol={coinData.symbol} />}
+      
+     </div>
      
-
-    </div>
+  </div>
   )
 }
 
