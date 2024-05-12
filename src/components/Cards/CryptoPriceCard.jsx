@@ -9,7 +9,7 @@ import {
   faCartShopping,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import { coins } from "../../utils/coins";
+
 import "./style.css";
 import BuyModal from "../BuyModal/BuyModal";
 

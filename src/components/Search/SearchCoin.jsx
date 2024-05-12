@@ -1,7 +1,7 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
-import { coins } from '../../utils/coins'
+
 const SearchCoin = ({coins,setFilteredCoins}) => {
 
     const [searchText, setSearchText] = useState("");

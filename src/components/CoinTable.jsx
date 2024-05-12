@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
-import { coins } from "../utils/coins";
+
 import { useDispatch } from "react-redux";
 import { addToWatchlist } from "../Pages/Dashboard/WatchList/watchlistSlice";
 import TableLongCards from "./Cards/TableLongCards";
