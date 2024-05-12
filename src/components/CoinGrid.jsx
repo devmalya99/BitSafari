@@ -33,9 +33,9 @@ const CoinGrid = ({ filteredCoins, setFilteredCoins, page }) => {
               sm={isMobile ? 12 : isTablet ? 6 : 4}
               md={isTablet ? 12 : 4}
             >
-              <Link to={`/coins/${each.id}`}>
+              
               <CryptoGridCard data={each} delay={(i%3)*0.33} />
-              </Link>
+              
             
             </Grid>
           ))}

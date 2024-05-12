@@ -117,12 +117,15 @@ const dispatch = useDispatch();
 
         <div className="footer-div flex justify-evenly border-t-2">
           <div className="Buy Div flex items-center mt-2 border-2 bg-[#111] rounded-xl px-4 py-1 cursor-pointer  shadow-md ">
+          <Link to={`/coins/${id}`}>
             <FontAwesomeIcon
               icon={faCartShopping}
               size="xl"
               style={{ color: "#63E6BE" }}
             />
+           
             <button className="btn text-2xl ml-2" onClick={()=>document.getElementById('my_modal_4').showModal()}>Buy</button>
+            </Link>
             
           </div>
 
