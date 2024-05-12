@@ -31,8 +31,8 @@ const TableLongCards = ({coin,delay}) => {
     
         <motion.tbody
               key={coin.id}
-              className="hover:bg-gray-900 cursor-pointer"
-              onClick={()=>handleClick(coin.id)}
+              className="hover:bg-gray-900 "
+              
               initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: delay }}
@@ -41,7 +41,9 @@ const TableLongCards = ({coin,delay}) => {
               <tr>
                 <th>{coin.market_cap_rank}</th>
                 <td>
-                  <div className="flex items-center gap-3">
+                  <div 
+                  onClick={()=>handleClick(coin.id)}
+                  className="flex items-center gap-3 cursor-pointer">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
                         <img
