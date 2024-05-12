@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const BuyModal = ({price}) => {
+  const [qty,setQty] = useState(1)
   return (
     <dialog id="my_modal_4" className="modal">
     <div className="modal-box w-11/12 max-w-5xl">
@@ -8,7 +9,7 @@ const BuyModal = ({price}) => {
      
       <div className="md:font-bold bg-blue-500 rounded-xl">
         
-        <p className='ml-2 text-md sm:text-lg md:text-xl lg:text-2xl'> Buy Bitcoin x 25 at {price}₹</p>
+        <p className='ml-2 text-md sm:text-lg md:text-xl lg:text-2xl'> Buy Bitcoin x {qty} at {price*qty}₹</p>
         
       
       </div>
@@ -24,6 +25,8 @@ const BuyModal = ({price}) => {
             <input className='bg-green-200 text-black rounded-xl text-bold text-md sm:text-lg 
             md:text-xl sm:py-1 md:py-2 lg:py-3 '
             type='number'
+            onChange={(e)=>setQty(e.target.value)}
+            value={qty}
             />
           </span>
           

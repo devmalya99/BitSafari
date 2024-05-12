@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToWatchlist, removeFromWatchList } from '../../Pages/Dashboard/WatchList/watchlistSlice'
 import BuyModal from '../BuyModal/BuyModal'
 import { useNavigate } from 'react-router-dom'
+import { GetCryptoState } from '../../context/cryptoContext'
 const TableLongCards = ({coin,delay}) => {
-
+  const {currency} = GetCryptoState()
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const list = useSelector((store)=>store.watchList.list)
@@ -60,7 +61,7 @@ const TableLongCards = ({coin,delay}) => {
                 </td>
                 <td>
                   <span className="badge badge-ghost badge-sm text-lg">
-                    {/* {currency === "INR" ? "₹" : "$"} */}
+                    {currency === "INR" ? "₹" : "$"}
                     {coin.current_price}
                   </span>
                 </td>

@@ -6,14 +6,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
-import { useDebugValue, useState } from "react";
+import { useContext, useDebugValue, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToWatchlist, removeFromWatchList } from "../../Pages/Dashboard/WatchList/watchlistSlice";
 import BuyModal from "../BuyModal/BuyModal";
 import { Link } from "react-router-dom";
+import { GetCryptoState } from "../../context/cryptoContext";
 
 const CryptoGridCard = ({ data ,delay }) => {
-  
+  const {currency} = GetCryptoState()
   const list = useSelector((store)=>store.watchList.list)
   
   const {
@@ -90,7 +91,7 @@ const dispatch = useDispatch();
         <div className="price-cap-div flex justify-between mb-6">
           <div>
             {" "}
-            <span className="text-xl font-bold">₹ {current_price}</span>
+            <span className="text-xl font-bold">{currency==='INR'?'₹':'$'} {current_price}</span>
           </div>
           <div>
             <p className="text-lg">

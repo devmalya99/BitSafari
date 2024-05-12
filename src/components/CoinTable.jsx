@@ -27,7 +27,7 @@ const CoinTable = ({ filteredCoins, setFilteredCoins, page }) => {
   const handleSort = (prop, sortOrder) => {
     setShow(true);
 
-    const sorted = [...coins].sort((a, b) => {
+    const sorted = [...filteredCoins].sort((a, b) => {
       if (sortOrder === "asc") {
         return a[prop] - b[prop];
       } else {

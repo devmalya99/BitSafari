@@ -76,7 +76,12 @@ const CryptoPriceCard = ({ data }) => {
                           : "text-red-600 font-bold border-red-500 border-2 rounded-xl px-2 py-2 sm:px-4 flex justify-center"
                       }
                     >
-                      <span className="text-md md:text-md lg:text-md">{ath_change_percentage}%</span>
+                      {
+                        ath_change_percentage<0 &&
+                        <span className="text-md md:text-md lg:text-md">{(ath_change_percentage.toFixed(0))}%</span>
+                        
+                      }
+                      
                       
                     </div>
                   </td>
