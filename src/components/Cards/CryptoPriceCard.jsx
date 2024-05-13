@@ -12,6 +12,7 @@ import {
 
 import "./style.css";
 import BuyModal from "../BuyModal/BuyModal";
+import { GetCryptoState } from "../../context/cryptoContext";
 
 const CryptoPriceCard = ({ data }) => {
   const {
@@ -27,6 +28,7 @@ const CryptoPriceCard = ({ data }) => {
   } = data;
    
   const dispatch = useDispatch()
+  const currency = GetCryptoState()
   const [isGreen, setGreen] = useState(price_change_percentage_24h > 0);
 
   return (
@@ -49,7 +51,8 @@ const CryptoPriceCard = ({ data }) => {
                       <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl  font-semibold">
                         {name}
                       </h2>
-                      <span className="text-left">₹{current_price}</span>
+                      <span className="text-left">
+                        {currency==='INR'?'₹' : '$'}{current_price}</span>
                     </div>
                   </div>
                 </td>
