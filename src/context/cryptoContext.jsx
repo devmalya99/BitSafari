@@ -8,3 +8,4 @@ export default CryptoContext
 export const GetCryptoState=()=>{
     return useContext(CryptoContext)
 }
+ 

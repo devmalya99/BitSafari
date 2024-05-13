@@ -4,13 +4,13 @@ import './App.css'
 import Navigation from './components/Navigation'
 import CryptoContext from './context/cryptoContext'
 import 'react-alice-carousel/lib/alice-carousel.css';
-import TradingViewChart from './components/Widget/TradingViewChart';
 
 
 function App() {
   
 const [currency,setCurrency] = useState('INR')
 const [symbol,setSymbol] = useState('₹')
+
 
 useEffect(()=>{
   if(currency==='INR') setSymbol("₹")
@@ -19,7 +19,12 @@ useEffect(()=>{
 },[currency])
   return (
     <>
-    <CryptoContext.Provider value={{currency,setCurrency,symbol,setSymbol}}>
+    <CryptoContext.Provider 
+    value={{currency,
+    setCurrency,
+    symbol,
+    setSymbol,
+    }}>
     <div className='dark'>
        <Navigation/>
        
