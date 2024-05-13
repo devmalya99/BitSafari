@@ -21,11 +21,11 @@ const WatchList = () => {
       <div className='text-center bg-blue-700 text-xl font-semibold py-1 mb-4'>WatchList</div>
       {
         arr.length===0 && 
-        <div className='text-center flex flex-col items-center h-screen'>
+        <div className='text-center flex flex-col items-center h-screen text-lg md:text-xl lg:text-2xl '>
 
-          <p className='text-5xl mt-16'>Its lonely here....</p>
+          <p className='text-5xl mt-16'>Its so lonely here....</p>
 
-        <p className=' mb-4 text-5xl mt-8'>How about we add something</p>
+        <p className=' mb-4 mt-8'>How about we add something</p>
 
         <button className='bg-blue-700 px-6 py-2 rounded-xl font-bold text-2xl mt-8'
         onClick={()=>handleHome()}>Go to Home</button>

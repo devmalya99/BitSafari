@@ -10,11 +10,11 @@ const CustomerForm = () => {
   
     const handleSubmit=(e)=>{
       e.preventDefault()
-     dispatch(createCustomer(fullName,nationId))
+    //  dispatch(createCustomer(fullName,nationId))
     }
     return (
       <div className="flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-bold mb-4">Create new customer</h2>
+        <h2 className="text-2xl font-bold mb-4">Please fill up your name?</h2>
         <form onSubmit={handleSubmit} className="flex flex-col w-full max-w-md">
           <input
             type="text"

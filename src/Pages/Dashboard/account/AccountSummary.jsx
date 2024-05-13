@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
+import myStore from '../../../Redux/store'
 const AccountSummary = () => {
-  const customerFullName = useSelector((store)=>store.customer.fullName)
+  console.log(myStore.getState())
+  const customerFullName = useSelector((store)=>store.customer.user.email)
   const cash = useSelector((store)=>store.account.cash)
   const balance = useSelector((store)=>store.account.balance)
 
@@ -13,7 +14,7 @@ const AccountSummary = () => {
     <div className="flex justify-center">
     <div className="flex flex-col w-[400px]  mb-6 border-2 rounded-lg px-4 py-2 mt-8">
       <div className="flex justify-between">
-        <h1 className="text-2xl font-bold">Welcome {customerFullName}</h1>
+        <h1 className="text-lg md:text-xl lg:text-2xl  font-bold">Welcome {customerFullName.slice(0,8)}</h1>
         <div className=" flex flex-col text-xl font-semibold">
         <span>Asset Value</span>
         <span className="bg-gray-500">{balance}</span>

@@ -4,6 +4,7 @@ import './App.css'
 import Navigation from './components/Navigation'
 import CryptoContext from './context/cryptoContext'
 import 'react-alice-carousel/lib/alice-carousel.css';
+import { useSelector } from 'react-redux';
 
 
 function App() {

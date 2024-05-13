@@ -4,21 +4,24 @@ import AccountSummary from './account/AccountSummary'
 import DepositCash from './account/DepositCash'
 import { useSelector } from 'react-redux'
 import WatchList from '../Dashboard/WatchList'
+import myStore from '../../Redux/store'
+import Login from '../../components/GetIn/Login'
+import BottomNavigation from '../../components/reusables/BottomNavigation'
 const index = () => {
-  const customer = useSelector((store)=>store.customer.fullName)
-
+  const customerEmail = useSelector((store)=>store.customer.user.email)
+   console.log(myStore.getState())
   return (
     <>
     {
-      customer !=='' ? 
+      customerEmail ? 
       <div className='flex flex-col'>
         <AccountSummary/>
         <DepositCash/>
         <WatchList/>
-        
+        <BottomNavigation/>
       </div>
       :
-      <CustomerForm/>
+      <Login/>
     }
   
     

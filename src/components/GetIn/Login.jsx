@@ -1,36 +1,66 @@
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useState, useRef } from "react";
 
 
 import { useDispatch } from "react-redux";
 import { auth } from "../../Firebase/firebase";
-
+import { createCustomer } from '../../Pages/Dashboard/customer/customerSlice'
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  
   const dispatch = useDispatch();
- 
+ const navigate = useNavigate()
 
-  const name = useRef(null);
+ 
   const email = useRef(null);
   const password = useRef(null);
+  const confirm_password=useRef(null)
 
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
-    .then((user) => {
-      console.log(user);
-    })
-    .catch((error) => {
-      setErrorMessage(error.message);
-    });
+    
 
-   console.log('succes',email.current.value,password.current.value)
+    if(!isSignInForm){
+
+        if(password.current.value !== confirm_password.current.value){
+            alert('password and confirm password does not match')
+            return;
+        }
+        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((res) => {
+          alert('user created')
+          dispatch(createCustomer(res.user))
+          navigate('/dashboard')
+        })
+        .catch((error) => {
+          setErrorMessage(error.message);
+        });
+
+    }
+    
+    else{
+        signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((res) => {
+
+    // Signed in 
+    console.log('user signed in',res)
+    dispatch(createCustomer(res.user))
+    alert('user signed in')
+    navigate('/dashboard')
+    // ...
+  })
+  .catch((error) => {
+    setErrorMessage(error.message);
+  });
+    }
+  
 
   }
 
@@ -52,14 +82,7 @@ const Login = () => {
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
 
-        {!isSignInForm && (
-          <input
-            ref={name}
-            type="text"
-            placeholder="Full Name"
-            className="p-4 my-4 w-full bg-gray-700"
-          />
-        )}
+        
         <input
           ref={email}
           type="text"
@@ -72,6 +95,16 @@ const Login = () => {
           placeholder="Password"
           className="p-4 my-4 w-full bg-gray-700"
         />
+        {
+        !isSignInForm && (
+         <input
+          ref={confirm_password}
+          type="password"
+          placeholder="Confirm Password"
+          className="p-4 my-4 w-full bg-gray-700"
+        />
+            )
+        }
         <p className="text-red-500 font-bold text-lg py-2">{errorMessage}</p>
         <button type="submit"
           className="p-4 my-6 bg-red-700 w-full rounded-lg"
