@@ -40,9 +40,9 @@ function Header() {
         <Link to="/home">
           <p className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Home</p>
         </Link>
-        <Link to="/compare">
+        {/* <Link to="/compare">
           <p className="text-lg shadow-sm shadow-gray-700 rounded-xl px-4 py-1 hover:shadow-gray-500 hover:text-xl">Compare</p>
-        </Link>
+        </Link> */}
 
 
         <div className="indicator">
