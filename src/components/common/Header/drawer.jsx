@@ -39,9 +39,9 @@ export default function TemporaryDrawer() {
           <Link to="/home">
             <p className="text-2xl rounded-xl px-2 py-1 mb-4 mt-8 text-yellow-500 font-bold shadow-gray-700 shadow-sm hover:border-e-2">Home</p>
           </Link>
-          <Link to="/compare">
+          {/* <Link to="/compare">
             <p className="text-2xl px-2 py-1 mb-4 rounded-xl text-yellow-500 font-bold shadow-gray-700 shadow-sm hover:border-e-2">Compare</p>
-          </Link>
+          </Link> */}
 
           <div className="indicator">
   <span className="indicator-item badge badge-secondary">{wishlist.length}</span> 
